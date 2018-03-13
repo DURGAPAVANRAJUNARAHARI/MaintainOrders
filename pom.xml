@@ -3,9 +3,8 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>order</groupId>
 	<artifactId>maintainorder</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
-	<name>maintainorder</name>
+	<version>01</version>
+
 	<url>http://maven.apache.org</url>
 
 	<properties>
@@ -21,27 +20,18 @@
 			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
+
 		<dependency>
-			<groupId>joda-time</groupId>
-			<artifactId>joda-time</artifactId>
-			<version>${jodatime.version}</version>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>1.9.5</version>
+			<scope>test</scope>
 		</dependency>
+
 	</dependencies>
 
 	<build>
-		<finalName>dateutils</finalName>
 		<plugins>
-
-			<!-- download source code in Eclipse, best practice -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-eclipse-plugin</artifactId>
-				<version>2.9</version>
-				<configuration>
-					<downloadSources>true</downloadSources>
-					<downloadJavadocs>false</downloadJavadocs>
-				</configuration>
-			</plugin>
 
 			<!-- Set a compiler level -->
 			<plugin>
@@ -53,35 +43,20 @@
 					<target>${jdk.version}</target>
 				</configuration>
 			</plugin>
-
 			<!-- Maven Assembly Plugin -->
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-assembly-plugin</artifactId>
-				<version>2.4.1</version>
 				<configuration>
 					<!-- get all project dependencies -->
 					<descriptorRefs>
 						<descriptorRef>jar-with-dependencies</descriptorRef>
 					</descriptorRefs>
-					<!-- MainClass in mainfest make a executable jar -->
 					<archive>
-					  <manifest>
-						<mainClass>package com.org.controller.OrderController</mainClass>
-					  </manifest>
+						<manifest>
+							<mainClass>com.org.controller.OrderController</mainClass>
+						</manifest>
 					</archive>
-
 				</configuration>
-				<executions>
-				  <execution>
-					<id>make-assembly</id>
-                                        <!-- bind to the packaging phase -->
-					<phase>package</phase>
-					<goals>
-						<goal>single</goal>
-					</goals>
-				  </execution>
-				</executions>
 			</plugin>
 
 		</plugins>

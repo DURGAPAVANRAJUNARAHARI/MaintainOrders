@@ -1,16 +1,16 @@
 package com.org.controller;
 
+import com.org.dao.OrderDAO;
 import com.org.service.OrderService;
 
-public class OrderController {
 
+public class OrderController {
+	static OrderService orderService = new OrderService(); 
 	public static void main(String[] args) throws Exception {
 		try{
-			OrderService orderService = new OrderService(); 
-			orderService.formatOrderData("C:\\Users\\dnarahar\\Desktop\\Java_code_Challenge.txt");
-			System.out.println("done");
+			orderService.formatOrderData("Java_code_Challenge.txt","Output.txt");
 		} catch(Exception e){
-			// exception logic
+			// Implement the exception handling logic
 			e.printStackTrace();
 		}
 	}
